@@ -349,7 +349,7 @@ function Hero() {
                 fontFamily: "'Instrument Serif', serif",
                 fontWeight: 400,
                 color: 'var(--orange)'
-              }}>Ruaimi 
+              }}>Ruzaimi 
 
               </span>
               <span style={{
