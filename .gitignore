@@ -1,0 +1,5 @@
+node_modules/
+portfolio/
+portfolio-site/
+*.tar
+*.gz
