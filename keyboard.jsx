@@ -227,7 +227,18 @@ function SkillsKeyboard() {
   const [hover, setHover] = useState(null);
   const [active, setActive] = useState(null); // last pressed skill, for info card
   const [rotation, setRotation] = useState({ x: 56, z: -28 });
+  const [kbScale, setKbScale] = useState(1);
   const stageRef = useRef(null);
+
+  useEffect(() => {
+    const upd = () => {
+      const w = window.innerWidth;
+      setKbScale(w < 560 ? Math.max(0.38, (w - 16) / 580) : w < 820 ? 0.78 : 1);
+    };
+    upd();
+    window.addEventListener('resize', upd);
+    return () => window.removeEventListener('resize', upd);
+  }, []);
 
   const COLS = 5, ROWS = 5;
   const SIZE = 88, GAP = 14;
@@ -319,15 +330,23 @@ function SkillsKeyboard() {
       <div
         ref={stageRef}
         style={{
-          perspective: '1800px',
-          perspectiveOrigin: '50% 40%',
           width: '100%',
           maxWidth: 900,
-          height: 620,
+          height: 620 * kbScale,
           position: 'relative',
           marginTop: 20,
         }}
       >
+        <div style={{
+          perspective: '1800px',
+          perspectiveOrigin: '50% 40%',
+          width: '100%',
+          height: 620,
+          position: 'absolute',
+          top: 0, left: 0,
+          transform: kbScale < 1 ? `scale(${kbScale})` : undefined,
+          transformOrigin: 'center top',
+        }}>
         {/* Glow under board */}
         <div style={{
           position: 'absolute', left: '50%', top: '70%', transform: 'translate(-50%, -50%)',
@@ -368,6 +387,7 @@ function SkillsKeyboard() {
               gap={GAP}
             />
           ))}
+        </div>
         </div>
       </div>
 

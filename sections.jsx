@@ -222,6 +222,18 @@ function Nav({ onJump }) {
         @media (max-width: 480px) {
           .nav-center { display: none !important; }
         }
+        @media (max-width: 860px) {
+          .about-grid { grid-template-columns: 1fr !important; }
+        }
+        @media (max-width: 700px) {
+          .project-row { grid-template-columns: 1fr !important; gap: 10px !important; }
+          .project-row > *:last-child { display: none; }
+          .contact-grid { grid-template-columns: 1fr !important; }
+          .contact-cards { grid-template-columns: 1fr !important; }
+        }
+        @media (max-width: 500px) {
+          .exp-card { grid-template-columns: 1fr !important; }
+        }
       `}</style>
     </React.Fragment>);
 
@@ -719,7 +731,7 @@ function About() {
         01 / ABOUT
       </div>
 
-      <div style={{
+      <div className="about-grid" style={{
         display: 'grid',
         gridTemplateColumns: '1fr 1.4fr',
         gap: 60,
@@ -1088,6 +1100,7 @@ function ProjectRow({ p, i }) {
       ref={ref}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
+      className="project-row"
       style={{
         borderTop: '1px solid var(--line)',
         padding: '40px 0',
@@ -1447,7 +1460,7 @@ function Contact() {
         </div>
 
         {/* Right — social cards grid */}
-        <div style={{
+        <div className="contact-cards" style={{
           display: 'grid',
           gridTemplateColumns: '1fr 1fr',
           gap: 14
