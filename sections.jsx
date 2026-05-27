@@ -1490,14 +1490,6 @@ function Contact() {
             href="https://www.linkedin.com/in/sharif-ruzaimi-syirazi"
             accent="#0077b5" />
           
-          <ContactCard
-            i={3}
-            logo="phone"
-            label="WHATSAPP / CALL"
-            value="+60 17-811 7668"
-            href="tel:+60178117668"
-            accent="#1ea35a" />
-          
         </div>
       </div>
 
